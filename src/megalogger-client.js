@@ -1,9 +1,9 @@
 if (typeof _MEGALOGGER == "undefined" || !_MEGALOGGER)
     _MEGALOGGER = {};
-if (typeof _MEGALOGGER.clientLib == "undefined" || !_MEGALOGGER.clientLib)
-    _MEGALOGGER.clientLib = {};
+if (typeof _MEGALOGGER.logger == "undefined" || !_MEGALOGGER.logger)
+    _MEGALOGGER.logger = {};
 
-_MEGALOGGER.clientLib._pushLog = function (apiKey, dataLog, level, source) {
+_MEGALOGGER.logger._pushLog = function (apiKey, dataLog, level, source) {
     var r = {};
     r.aud = apiKey;
     var token = _generateToken(r);
