@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script language="JavaScript" type="text/javascript" src="src/jwt-lib.min.js"></script>
+        <script language="JavaScript" type="text/javascript" src="src/megalogger-client.js"></script>
+    </head>
+    <body>
+        <p><input type="button" value="Call API!" onClick="callApi();"/></p>
+    </body>
+    <script>
+        function callApi() {
+            var apiInfo = 'asefas_efjhj-afsd64sf_megaToken';
+            var dataLog = [{data: "Message test"}];
+            var level = 'info';
+            _MEGALOGGER.clientLib._pushLog(apiInfo, dataLog, level, 'test_log');
+        }
+    </script>
+</html>
+
