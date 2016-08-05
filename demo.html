@@ -9,10 +9,11 @@
     </body>
     <script>
         function callApi() {
-            var apiInfo = 'asefas_efjhj-afsd64sf';
+            var apiKey = 'asefas_efjhj-afsd64sf';
             var dataLog = [{data: "Message test"}];
             var level = 'info';
-            _MEGALOGGER.logger._pushLog(apiInfo, dataLog, level, 'test_log');
+            var Logger = new MegaLogger(apiKey, 'source');
+            Logger.log(dataLog, level);
         }
     </script>
 </html>

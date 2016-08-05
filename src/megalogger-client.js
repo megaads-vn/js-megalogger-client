@@ -1,16 +1,34 @@
-if (typeof _MEGALOGGER == "undefined" || !_MEGALOGGER)
-    _MEGALOGGER = {};
-if (typeof _MEGALOGGER.logger == "undefined" || !_MEGALOGGER.logger)
-    _MEGALOGGER.logger = {};
+var MegaLogger = Class.create();
+MegaLogger.prototype = {
+    initialize: function (apiKey, source) {
+        this.apiKey = apiKey;
+        this.source = source;
+    },
+    log: function (data, level) {
+        var r = {};
+        r.aud = this.apiKey;
+        var sClaim = JSON.stringify(r);
+        var alg = 'HS512';
+        var pHeader = {'alg': alg, 'typ': 'JWT'};
+        var sHeader = JSON.stringify(pHeader);
+        var key = 'megadev_secret';
+        var token = '';
+        token = KJUR.jws.JWS.sign(null, sHeader, sClaim, key);
+        var d = new Date();
+        var n = d.getTime();
+        var dataLog = {
+            token: token,
+            type: 'request',
+            data: data,
+            level: level,
+            meta: {
+                language: 'Javascript'
+            },
+            time: n,
+            source: source
 
-_MEGALOGGER.logger._pushLog = function (apiKey, dataLog, level, source) {
-    var r = {};
-    r.aud = apiKey;
-    var token = _generateToken(r);
-    var dataPush = _buildDataLog(token, dataLog, level, source);
-    _doPush(dataPush);
-    function _doPush(data) {
-        var strData = JSON.stringify(data);
+        };
+        var strData = JSON.stringify(dataLog);
         try {
             var xhr = new XMLHttpRequest();
             xhr.open("POST"
@@ -28,36 +46,6 @@ _MEGALOGGER.logger._pushLog = function (apiKey, dataLog, level, source) {
             alert(e.message);
         }
     }
-
-    function _buildDataLog(token, dataLog, level, source) {
-        var d = new Date();
-        var n = d.getTime();
-        var retVal = {
-            token: token,
-            type: 'request',
-            data: dataLog,
-            level: level,
-            meta: {
-                language: 'Javascript'
-            },
-            time: n,
-            source: source
-
-        };
-        return retVal;
-    }
-
-    function _generateToken(r) {
-        var sClaim = JSON.stringify(r);
-        var alg = 'HS512';
-        var pHeader = {'alg': alg, 'typ': 'JWT'};
-        var sHeader = JSON.stringify(pHeader);
-        var key = 'megadev_secret';
-        var sJWS = '';
-        sJWS = KJUR.jws.JWS.sign(null, sHeader, sClaim, key);
-        return sJWS;
-    }
-
 };
 
 
