@@ -19,7 +19,7 @@
  // level for log include: info, debug, warning, error, critical 
  var level = 'info';
  // push log
- var Logger = new MEGALOGGER(apiKey, 'source');
+ var Logger = new Megalogger(apiKey, 'source');
  Logger.log(dataLog, level);
  
 ```
