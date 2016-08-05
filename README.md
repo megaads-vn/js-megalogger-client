@@ -13,13 +13,14 @@
 
 ```javascript
  // your apiKey
- var apiKey = 'asefas_efjhj-afsd64sf_megaToken';
+ var apiKey = 'asefas_efjhj-afsd64sf';
  // Log
  var dataLog = [{data: "Message test"}];
  // level for log include: info, debug, warning, error, critical 
  var level = 'info';
  // push log
- _MEGALOGGER.logger._pushLog(apiKey, dataLog, level, 'test_log');
+ var Logger = new MEGALOGGER(apiKey, 'source');
+ Logger.log(dataLog, level);
  
 ```
 

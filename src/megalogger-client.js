@@ -1,7 +1,20 @@
-if (typeof MEGALOGGER == "undefined" || !MEGALOGGER)
-    MEGALOGGER = {};
+var Class = function (methods) {
+    var klass = function () {
+        this.initialize.apply(this, arguments);
+    };
 
-MEGALOGGER.prototype = {
+    for (var property in methods) {
+        klass.prototype[property] = methods[property];
+    }
+
+    if (!klass.prototype.initialize)
+        klass.prototype.initialize = function () {
+        };
+
+    return klass;
+};
+
+var Megalogger = Class({
     initialize: function (apiKey, source) {
         this.apiKey = apiKey;
         this.source = source;
@@ -27,7 +40,7 @@ MEGALOGGER.prototype = {
                 language: 'Javascript'
             },
             time: n,
-            source: source
+            source: this.source
 
         };
         var strData = JSON.stringify(dataLog);
@@ -45,11 +58,7 @@ MEGALOGGER.prototype = {
             xhr.send(strData);
 
         } catch (e) {
-            alert(e.message);
+            console.log(e.message);
         }
     }
-};
-
-
-
-
+});
