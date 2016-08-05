@@ -1,5 +1,7 @@
-var MegaLogger = Class.create();
-MegaLogger.prototype = {
+if (typeof MEGALOGGER == "undefined" || !MEGALOGGER)
+    MEGALOGGER = {};
+
+MEGALOGGER.prototype = {
     initialize: function (apiKey, source) {
         this.apiKey = apiKey;
         this.source = source;
