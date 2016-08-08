@@ -9,18 +9,26 @@
 ##Usage:
 
 ```javascript
-var megalogger = require('megalogger');
+var Megalogger = require('megalogger');
 
  // your apiKey
  var apiKey = 'asefas_efjhj-afsd64sf';
-
+ var source = 'Your source';
+ var initData = {
+            apiKey: apiKey,
+            source: source
+        };
  // Log
  var dataLog = [{data: "Message test"}];
 
  // level for log include: info, debug, warning, error, critical 
  var level = 'info';
+ 
+ // init instance of class Megalogger
+ var logger = new Megalogger(initData);
+
  // push log
-megalogger.log(apiKey, dataLog, level, 'source');
+ logger.log(dataLog, level);
  
 ```
 
@@ -39,12 +47,17 @@ megalogger.log(apiKey, dataLog, level, 'source');
 ```javascript
  // your apiKey
  var apiKey = 'asefas_efjhj-afsd64sf';
+ var source = 'Your source';
+ var initData = {
+    apiKey: apiKey,
+    source: source
+ };
  // Log
  var dataLog = [{data: "Message test"}];
  // level for log include: info, debug, warning, error, critical 
  var level = 'info';
  // push log
- var Logger = new Megalogger(apiKey, 'source');
+ var Logger = new Megalogger(initData);
  Logger.log(dataLog, level);
  
 ```

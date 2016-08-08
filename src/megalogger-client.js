@@ -15,9 +15,9 @@ var Class = function (methods) {
 };
 
 var Megalogger = Class({
-    initialize: function (apiKey, source) {
-        this.apiKey = apiKey;
-        this.source = source;
+    initialize: function (initData) {
+        this.apiKey = initData.apiKey;
+        this.source = initData.source;
     },
     log: function (data, level) {
         var r = {};

@@ -9,10 +9,19 @@
     </body>
     <script>
         function callApi() {
+            // your apiKey
             var apiKey = 'asefas_efjhj-afsd64sf';
+            var source = 'Your source';
+            var initData = {
+                apiKey: apiKey,
+                source: source
+            };
+            // Log
             var dataLog = [{data: "Message test"}];
+            // level for log include: info, debug, warning, error, critical 
             var level = 'info';
-            var Logger = new MEGALOGGER(apiKey, 'source');
+            // push log
+            var Logger = new Megalogger(initData);
             Logger.log(dataLog, level);
         }
     </script>
