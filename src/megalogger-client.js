@@ -22,11 +22,12 @@ var Megalogger = Class({
     log: function (data, level) {
         var r = {};
         r.aud = this.apiKey;
+        r.exp = KJUR.jws.IntDate.getNow() + 30;
         var sClaim = JSON.stringify(r);
         var alg = 'HS512';
         var pHeader = {'alg': alg, 'typ': 'JWT'};
         var sHeader = JSON.stringify(pHeader);
-        var key = 'megadev_secret';
+        var key = 'megalogger';
         var token = '';
         token = KJUR.jws.JWS.sign(null, sHeader, sClaim, key);
         var d = new Date();
