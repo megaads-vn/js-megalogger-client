@@ -48,7 +48,7 @@ var Megalogger = Class({
         try {
             var xhr = new XMLHttpRequest();
             xhr.open("POST"
-                    , "http://logger.megaads.vn:8800/api/message?destination=queue://logger&enable_cors_headers=true&enable_http_auth=true"
+                    , "http://hamster.megaads.vn:8161/api/message?destination=queue://logger&enable_cors_headers=true&enable_http_auth=true"
                     , true);
             xhr.setRequestHeader('Accept', 'application/json');
             xhr.onreadystatechange = function () {
