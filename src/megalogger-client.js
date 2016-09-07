@@ -33,9 +33,10 @@ var Megalogger = Class({
         var d = new Date();
         var n = d.getTime();
         var dataLog = {
+            title: data.title,
             token: token,
             type: 'request',
-            data: data,
+            data: data.body,
             level: level,
             meta: {
                 language: 'Javascript'
