@@ -39,7 +39,8 @@ var Megalogger = Class({
             data: data.body,
             level: level,
             meta: {
-                language: 'Javascript'
+                language: 'Javascript',
+                device: navigator.userAgent
             },
             time: n,
             source: this.source
